@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 import '../models/ad_state.dart';
 import '../services/admob_service.dart';
 
@@ -93,7 +94,8 @@ class AdProvider extends ChangeNotifier {
       _rewardedAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
           if (kDebugMode) {
-            print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
+            print(
+                '$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
           }
         },
       );
