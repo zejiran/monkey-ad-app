@@ -9,10 +9,11 @@ class RewardedAdButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final adProvider = Provider.of<AdProvider>(context);
+    final isLoading = adProvider.isLoading;
 
     return ElevatedButton(
-      onPressed: adProvider.showRewardedAd,
-      child: const Text('Even better! Make it dance for 5 seconds!'),
+      onPressed: isLoading ? null : adProvider.showRewardedAd,
+      child: const Text('Even better! Make it dance for 5 seconds! 🤯'),
     );
   }
 }

@@ -26,25 +26,35 @@ class HomeScreen extends StatelessWidget {
               if (isAdWatched)
                 const AdMonkeyDance()
               else
-                const Column(
-                  children: [
-                    Text(
-                      'Welcome to Ad Monkey Madness!',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                      'Click any of the buttons below to watch an ad and then see a monkey dancing!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Column(
+                    children: [
+                      Image(
+                        image: AssetImage('assets/logo.png'),
+                        height: 200,
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Welcome to Ad Monkey Madness!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'Click any of the buttons below to watch an ad and then see a monkey dancing!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      SizedBox(height: 20),
+                      AdButton(),
+                      SizedBox(height: 20),
+                      RewardedAdButton(),
+                    ],
+                  ),
                 ),
-              const SizedBox(height: 20),
-              const AdButton(),
-              const SizedBox(height: 20),
-              const RewardedAdButton(),
             ],
           ),
           const Align(

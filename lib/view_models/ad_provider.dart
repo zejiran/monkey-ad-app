@@ -11,8 +11,10 @@ class AdProvider extends ChangeNotifier {
   InterstitialAd? _interstitialAd;
   RewardedAd? _rewardedAd;
   final AdState _adState = AdState();
-  final ConfettiController _confettiController =
-      ConfettiController(duration: const Duration(seconds: 5));
+  final ConfettiController _confettiController = ConfettiController(
+    duration: const Duration(seconds: 5),
+  );
+  bool _isLoading = false;
 
   AdProvider() {
     _loadInterstitialAd();
@@ -23,8 +25,15 @@ class AdProvider extends ChangeNotifier {
 
   ConfettiController get confettiController => _confettiController;
 
+  bool get isLoading => _isLoading;
+
   Future<void> _loadInterstitialAd() async {
+    _isLoading = true;
+    notifyListeners();
     _interstitialAd = await AdMobService.loadInterstitialAd();
+    _isLoading = false;
+    notifyListeners();
+
     if (_interstitialAd != null) {
       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
         onAdShowedFullScreenContent: (ad) {
@@ -53,7 +62,12 @@ class AdProvider extends ChangeNotifier {
   }
 
   Future<void> _loadRewardedAd() async {
+    _isLoading = true;
+    notifyListeners();
     _rewardedAd = await AdMobService.loadRewardedAd();
+    _isLoading = false;
+    notifyListeners();
+
     if (_rewardedAd != null) {
       _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
         onAdShowedFullScreenContent: (ad) {

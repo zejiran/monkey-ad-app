@@ -9,9 +9,10 @@ class AdButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final adProvider = Provider.of<AdProvider>(context);
+    final isLoading = adProvider.isLoading;
 
     return ElevatedButton(
-      onPressed: adProvider.showInterstitialAd,
+      onPressed: isLoading ? null : adProvider.showInterstitialAd,
       child: const Text('Make it dance for 1 second!'),
     );
   }
