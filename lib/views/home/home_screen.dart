@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
           const ConfettiDisplay(),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (isAdWatched)
                 const AdMonkeyDance()
@@ -29,6 +30,8 @@ class HomeScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.all(12.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image(
                         image: AssetImage('assets/logo.png'),
@@ -37,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 20),
                       Text(
                         'Welcome to Ad Monkey Madness!',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
