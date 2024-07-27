@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "618025604173",
+    "project_id": "monkey-ad-app",
+    "storage_bucket": "monkey-ad-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618025604173:android:8b7eca7e35d767b99c7804",
+        "android_client_info": {
+          "package_name": "com.alzusapps.admonkeymadness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlwhg-AvBulMDydcRE8Tjs6mR-JLEgd3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
