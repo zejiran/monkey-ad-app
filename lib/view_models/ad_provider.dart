@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../models/ad_state.dart';
@@ -27,6 +29,7 @@ class AdProvider extends ChangeNotifier {
         onAdDismissedFullScreenContent: (ad) {
           ad.dispose();
           _loadInterstitialAd();
+          _startMonkeyDance(1);
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
           if (kDebugMode) {
@@ -55,6 +58,7 @@ class AdProvider extends ChangeNotifier {
         onAdDismissedFullScreenContent: (ad) {
           ad.dispose();
           _loadRewardedAd();
+          _startMonkeyDance(5);
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
           if (kDebugMode) {
@@ -64,7 +68,6 @@ class AdProvider extends ChangeNotifier {
           _loadRewardedAd();
         },
       );
-      _adState.setAdWatched(false);
     } else {
       if (kDebugMode) {
         print('RewardedAd failed to load');
@@ -92,7 +95,6 @@ class AdProvider extends ChangeNotifier {
           if (kDebugMode) {
             print('$ad with reward $RewardItem(${reward.amount}, ${reward.type})');
           }
-          _adState.setAdWatched(true);
         },
       );
       _rewardedAd = null;
@@ -101,6 +103,15 @@ class AdProvider extends ChangeNotifier {
         print('Rewarded ad is not loaded yet.');
       }
     }
+  }
+
+  void _startMonkeyDance(int durationInSeconds) {
+    _adState.setAdWatched(true);
+    notifyListeners();
+    Timer(Duration(seconds: durationInSeconds), () {
+      _adState.setAdWatched(false);
+      notifyListeners();
+    });
   }
 
   @override

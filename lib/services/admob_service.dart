@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdMobService {
@@ -27,7 +28,9 @@ class AdMobService {
       listener: BannerAdListener(
         onAdLoaded: (Ad ad) => print('Ad loaded: ${ad.adUnitId}'),
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          print('Ad failed to load: ${ad.adUnitId}, $error');
+          if (kDebugMode) {
+            print('Ad failed to load: ${ad.adUnitId}, $error');
+          }
           ad.dispose();
         },
       ),
@@ -44,7 +47,9 @@ class AdMobService {
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) => completer.complete(ad),
         onAdFailedToLoad: (error) {
-          print('InterstitialAd failed to load: $error');
+          if (kDebugMode) {
+            print('InterstitialAd failed to load: $error');
+          }
           completer.complete(null);
         },
       ),
@@ -62,7 +67,9 @@ class AdMobService {
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) => completer.complete(ad),
         onAdFailedToLoad: (error) {
-          print('RewardedAd failed to load: $error');
+          if (kDebugMode) {
+            print('RewardedAd failed to load: $error');
+          }
           completer.complete(null);
         },
       ),

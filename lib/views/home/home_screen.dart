@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Click the button below to watch an ad and then see a monkey dancing!',
+                      'Click any of the buttons below to watch an ad and then see a monkey dancing!',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 18),
                     ),

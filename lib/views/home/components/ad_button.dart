@@ -11,7 +11,7 @@ class AdButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: adProvider.showInterstitialAd,
-      child: const Text('Show Ad'),
+      child: const Text('Make it dance for 1 second!'),
     );
   }
 }

@@ -11,7 +11,7 @@ class RewardedAdButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: adProvider.showRewardedAd,
-      child: const Text('Show Rewarded Ad'),
+      child: const Text('Even better! Make it dance for 5 seconds!'),
     );
   }
 }
