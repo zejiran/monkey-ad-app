@@ -1,16 +1,12 @@
-# monkey_ad_app
+# Ad Monkey Madness
 
-A new Flutter project.
+Welcome to Ad Monkey Madness! 🎉
 
-## Getting Started
+Are you ready for the most absurd app experience ever? Click the button to watch an ad, and as a reward, enjoy a hilarious 5-second dance from our animated monkey! 🎊
 
-This project is a starting point for a Flutter application.
+Features:
+- Click the button to see an ad
+- Enjoy confetti explosions
+- Laugh out loud with a dancing monkey animation
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It's simple, it's silly, and it's all about ads and monkey fun! Download now and embrace the madness! 🐒🎉
