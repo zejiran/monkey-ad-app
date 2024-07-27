@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -10,6 +11,8 @@ class AdProvider extends ChangeNotifier {
   InterstitialAd? _interstitialAd;
   RewardedAd? _rewardedAd;
   final AdState _adState = AdState();
+  final ConfettiController _confettiController =
+      ConfettiController(duration: const Duration(seconds: 5));
 
   AdProvider() {
     _loadInterstitialAd();
@@ -17,6 +20,8 @@ class AdProvider extends ChangeNotifier {
   }
 
   AdState get adState => _adState;
+
+  ConfettiController get confettiController => _confettiController;
 
   Future<void> _loadInterstitialAd() async {
     _interstitialAd = await AdMobService.loadInterstitialAd();
@@ -109,9 +114,11 @@ class AdProvider extends ChangeNotifier {
 
   void _startMonkeyDance(int durationInSeconds) {
     _adState.setAdWatched(true);
+    _confettiController.play();
     notifyListeners();
     Timer(Duration(seconds: durationInSeconds), () {
       _adState.setAdWatched(false);
+      _confettiController.stop();
       notifyListeners();
     });
   }
@@ -120,6 +127,7 @@ class AdProvider extends ChangeNotifier {
   void dispose() {
     _interstitialAd?.dispose();
     _rewardedAd?.dispose();
+    _confettiController.dispose();
     super.dispose();
   }
 }

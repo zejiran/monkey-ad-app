@@ -10,16 +10,19 @@ class ConfettiDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final adProvider = Provider.of<AdProvider>(context);
-    final confettiController =
-        ConfettiController(duration: const Duration(seconds: 5));
-
-    if (adProvider.adState.isAdWatched) {
-      confettiController.play();
-    }
+    final confettiController = adProvider.confettiController;
 
     return ConfettiWidget(
       confettiController: confettiController,
       blastDirectionality: BlastDirectionality.explosive,
+      shouldLoop: false,
+      colors: const [
+        Colors.green,
+        Colors.blue,
+        Colors.pink,
+        Colors.orange,
+        Colors.purple
+      ],
     );
   }
 }

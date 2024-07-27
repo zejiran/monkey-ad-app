@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          const ConfettiDisplay(),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -54,7 +55,6 @@ class HomeScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: AdBanner(),
           ),
-          const ConfettiDisplay(),
         ],
       ),
     );
