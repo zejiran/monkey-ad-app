@@ -1,4 +1,4 @@
-package com.example.monkey_ad_app
+package com.alzusapps.admonkeymadness
 
 import io.flutter.embedding.android.FlutterActivity
 

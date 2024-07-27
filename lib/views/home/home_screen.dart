@@ -16,22 +16,20 @@ class HomeScreen extends StatelessWidget {
     final isAdWatched = adProvider.adState.isAdWatched;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ad Monkey Madness'),
-      ),
       body: Stack(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (isAdWatched)
-                AdMonkeyDance()
+                const AdMonkeyDance()
               else
                 const Column(
                   children: [
                     Text(
                       'Welcome to Ad Monkey Madness!',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 20),
                     Text(
@@ -44,7 +42,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
               const AdButton(),
               const SizedBox(height: 20),
-              RewardedAdButton(),
+              const RewardedAdButton(),
             ],
           ),
           const Align(
