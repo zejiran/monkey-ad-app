@@ -27,18 +27,18 @@ class HomeScreen extends StatelessWidget {
               if (isAdWatched)
                 const AdMonkeyDance()
               else
-                const Padding(
-                  padding: EdgeInsets.all(12.0),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image(
+                      const Image(
                         image: AssetImage('assets/logo.png'),
                         height: 200,
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Welcome to Ad Monkey Madness!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -46,16 +46,26 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Click any of the buttons below to watch an ad and then see a monkey dancing!',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 18),
                       ),
-                      SizedBox(height: 20),
-                      AdButton(),
-                      SizedBox(height: 20),
-                      RewardedAdButton(),
+                      const SizedBox(height: 20),
+                      const AdButton(),
+                      const SizedBox(height: 20),
+                      const RewardedAdButton(),
+                      const SizedBox(height: 40),
+                      Text(
+                        'Your monkey has danced for ${(adProvider.monkeyDanceDuration / 3600).toStringAsFixed(2)} hours 🕺🐒',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.grey,
+                        ),
+                      ),
                     ],
                   ),
                 ),

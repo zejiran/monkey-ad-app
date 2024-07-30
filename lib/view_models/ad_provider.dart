@@ -6,6 +6,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../models/ad_state.dart';
 import '../services/admob_service.dart';
+import '../services/counter_service.dart';
 
 class AdProvider extends ChangeNotifier {
   InterstitialAd? _interstitialAd;
@@ -15,10 +16,13 @@ class AdProvider extends ChangeNotifier {
     duration: const Duration(seconds: 5),
   );
   bool _isLoading = false;
+  int _monkeyDanceDuration = 0;
+  final CounterService _counterService = CounterService();
 
   AdProvider() {
     _loadInterstitialAd();
     _loadRewardedAd();
+    _loadCounter();
   }
 
   AdState get adState => _adState;
@@ -26,6 +30,13 @@ class AdProvider extends ChangeNotifier {
   ConfettiController get confettiController => _confettiController;
 
   bool get isLoading => _isLoading;
+
+  int get monkeyDanceDuration => _monkeyDanceDuration;
+
+  Future<void> _loadCounter() async {
+    _monkeyDanceDuration = await _counterService.getCounter();
+    notifyListeners();
+  }
 
   Future<void> _loadInterstitialAd() async {
     _isLoading = true;
@@ -129,6 +140,8 @@ class AdProvider extends ChangeNotifier {
   void _startMonkeyDance(int durationInSeconds) {
     _adState.setAdWatched(true);
     _confettiController.play();
+    _counterService.incrementCounter(durationInSeconds);
+    _monkeyDanceDuration += durationInSeconds;
     notifyListeners();
     Timer(Duration(seconds: durationInSeconds), () {
       _adState.setAdWatched(false);
