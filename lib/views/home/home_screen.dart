@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                       const RewardedAdButton(),
                       const SizedBox(height: 40),
                       Text(
-                        'Your monkey has danced for ${(adProvider.monkeyDanceDuration / 3600).toStringAsFixed(2)} hours 🕺🐒',
+                        'Your monkey has danced for ${(adProvider.monkeyDanceDuration / 3600).toStringAsFixed(3)} hours 🕺🐒',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 16,
