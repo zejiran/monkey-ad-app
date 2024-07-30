@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../utils/toast_util.dart';
+
 class AdMobService {
   static String get bannerAdUnitId => Platform.isAndroid
       ? 'ca-app-pub-8487654522231134/9392286895'
@@ -50,6 +52,7 @@ class AdMobService {
           if (kDebugMode) {
             print('InterstitialAd failed to load: $error');
           }
+          ToastUtil.showAdLoadFailedToast();
           completer.complete(null);
         },
       ),
@@ -70,6 +73,7 @@ class AdMobService {
           if (kDebugMode) {
             print('RewardedAd failed to load: $error');
           }
+          ToastUtil.showAdLoadFailedToast();
           completer.complete(null);
         },
       ),
