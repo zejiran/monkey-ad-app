@@ -2,7 +2,7 @@ name: monkey_ad_app
 description: "Welcome to Ad Monkey Madness! Click the button to see an ad and enjoy a dancing monkey with confetti and sound effects."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.4+5
+version: 1.0.5+6
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
