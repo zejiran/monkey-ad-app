@@ -20,8 +20,6 @@ class AdProvider extends ChangeNotifier {
   final CounterService _counterService = CounterService();
 
   AdProvider() {
-    _loadInterstitialAd();
-    _loadRewardedAd();
     _loadCounter();
   }
 

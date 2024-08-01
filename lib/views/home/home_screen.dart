@@ -75,10 +75,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           const Align(
-            alignment: Alignment.topCenter,
-            child: AdBanner(),
-          ),
-          const Align(
             alignment: Alignment.bottomCenter,
             child: AdBanner(),
           ),
