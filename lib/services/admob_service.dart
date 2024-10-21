@@ -8,15 +8,15 @@ import '../utils/toast_util.dart';
 
 class AdMobService {
   static String get bannerAdUnitId => Platform.isAndroid
-      ? 'ca-app-pub-8487654522231134/9392286895'
+      ? 'ca-app-pub-3940256099942544/9214589741'
       : 'ca-app-pub-8487654522231134/xxxxxxxxxx';
 
   static String get interstitialAdUnitId => Platform.isAndroid
-      ? 'ca-app-pub-8487654522231134/2817369751'
+      ? 'ca-app-pub-3940256099942544/1033173712'
       : 'ca-app-pub-8487654522231134/xxxxxxxxxx';
 
   static String get rewardedAdUnitId => Platform.isAndroid
-      ? 'ca-app-pub-8487654522231134/6565043072'
+      ? 'ca-app-pub-3940256099942544/5224354917'
       : 'ca-app-pub-8487654522231134/xxxxxxxxxx';
 
   static void initialize() {
