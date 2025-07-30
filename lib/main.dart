@@ -7,6 +7,7 @@ import 'services/admob_service.dart';
 import 'theme/style.dart';
 import 'utils/routes.dart';
 import 'view_models/ad_provider.dart';
+import 'view_models/settings_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,13 +23,22 @@ class MonkeyAdApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AdProvider(),
-      child: MaterialApp(
-        title: 'Ad Monkey Madness',
-        theme: getAppTheme(),
-        initialRoute: Routes.home,
-        routes: Routes.getRoutes(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AdProvider()),
+        ChangeNotifierProvider(create: (_) => SettingsProvider()),
+      ],
+      child: Consumer<SettingsProvider>(
+        builder: (context, settingsProvider, child) {
+          return MaterialApp(
+            title: 'Ad Monkey Madness',
+            theme: getAppTheme(),
+            darkTheme: getDarkAppTheme(),
+            themeMode: settingsProvider.themeMode,
+            initialRoute: Routes.home,
+            routes: Routes.getRoutes(),
+          );
+        },
       ),
     );
   }

@@ -148,6 +148,12 @@ class AdProvider extends ChangeNotifier {
     });
   }
 
+  Future<void> resetStatistics() async {
+    _monkeyDanceDuration = 0;
+    await _counterService.resetCounter();
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     _interstitialAd?.dispose();

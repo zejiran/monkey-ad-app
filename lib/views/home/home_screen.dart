@@ -1,15 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../utils/routes.dart';
 import '../../view_models/ad_provider.dart';
+import '../../services/update_dialog_service.dart';
 import 'components/ad_banner.dart';
 import 'components/ad_button.dart';
 import 'components/ad_monkey_dance.dart';
 import 'components/confetti_display.dart';
 import 'components/rewarded_ad_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _showInitialDialogs();
+    });
+  }
+
+  Future<void> _showInitialDialogs() async {
+    if (!mounted) return;
+
+    // Show welcome dialog for new users
+    await UpdateDialogService.showWelcomeDialog(context);
+
+    if (!mounted) return;
+
+    // Show update dialog for existing users
+    await UpdateDialogService.showUpdateDialog(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +44,27 @@ class HomeScreen extends StatelessWidget {
     final isAdWatched = adProvider.adState.isAdWatched;
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ad Monkey Madness'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.emoji_events),
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.achievements);
+            },
+            tooltip: 'Achievements',
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.settings);
+            },
+            tooltip: 'Settings',
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           const ConfettiDisplay(),

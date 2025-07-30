@@ -1,22 +1,27 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+
+import '../../../view_models/settings_provider.dart';
 
 class AdMonkeyDance extends StatefulWidget {
   const AdMonkeyDance({super.key});
 
   @override
-  _AdMonkeyDanceState createState() => _AdMonkeyDanceState();
+  AdMonkeyDanceState createState() => AdMonkeyDanceState();
 }
 
-class _AdMonkeyDanceState extends State<AdMonkeyDance> {
+class AdMonkeyDanceState extends State<AdMonkeyDance> {
   late AudioPlayer _audioPlayer;
 
   @override
   void initState() {
     super.initState();
     _audioPlayer = AudioPlayer();
-    _playSound();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _playSound();
+    });
   }
 
   @override
@@ -26,7 +31,11 @@ class _AdMonkeyDanceState extends State<AdMonkeyDance> {
   }
 
   void _playSound() async {
-    await _audioPlayer.play(AssetSource('monkey_dance_sound.mp3'));
+    final settingsProvider =
+        Provider.of<SettingsProvider>(context, listen: false);
+    if (settingsProvider.soundEnabled) {
+      await _audioPlayer.play(AssetSource('monkey_dance_sound.mp3'));
+    }
   }
 
   @override

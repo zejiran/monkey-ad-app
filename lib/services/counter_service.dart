@@ -14,4 +14,9 @@ class CounterService {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt(_counterKey) ?? 0;
   }
+
+  Future<void> resetCounter() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_counterKey);
+  }
 }

@@ -13,6 +13,19 @@ ThemeData getAppTheme() {
   );
 }
 
+ThemeData getDarkAppTheme() {
+  return ThemeData(
+    useMaterial3: true,
+    colorScheme: darkColorScheme,
+    fontFamily: 'Roboto',
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: darkColorScheme.primary,
+      contentTextStyle: const TextStyle(color: Colors.white),
+      actionTextColor: Colors.white,
+    ),
+  );
+}
+
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xff006a66),
